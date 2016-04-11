@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--默认会搜索整个项目范围内的bean？-->
+        <bean id="target1" class="com.apress.prospring4.ch3.nestedapplicationcontext.SimpleTarget"
+              p:val-ref="injectBeanParent"/>
+
+
+        <bean id="target2" class="com.apress.prospring4.ch3.nestedapplicationcontext.SimpleTarget"
+              p:val-ref="injectBean"/>
+
+        <!--<bean id="target2" class="com.apress.prospring4.ch3.nestedapplicationcontext.SimpleTarget">
+            <property name="val">
+                <ref bean="injectBean"/>
+            </property>
+        </bean>-->
+
+        <!--将parent中的bean注入-->
+        <bean id="target3" class="com.apress.prospring4.ch3.nestedapplicationcontext.SimpleTarget">
+                <property name="val">
+                    <ref parent="injectBean"/>
+                </property>
+        </bean>
+
+        <bean id="injectBean" class="java.lang.String" c:_0="Child in Parent"/>
+
+</beans>
