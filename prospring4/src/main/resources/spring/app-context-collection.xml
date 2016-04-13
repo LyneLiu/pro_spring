@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanString" class="java.lang.String">
+        <constructor-arg value="Bean Object"/>
+    </bean>
+
+    <bean id="injectionCollection" class="com.apress.prospring4.ch3.collection.CollectionInjection">
+        <!--Map集合-->
+        <property name="map">
+            <map>
+                <entry key="someValue">
+                    <value>Map World!</value>
+                </entry>
+                <entry key="SomeBean">
+                    <ref bean="beanString"/>
+                </entry>
+            </map>
+        </property>
+
+        <!--Properties集合-->
+        <property name="props">
+            <props>
+                <prop key="firstName">
+                    Chris
+                </prop>
+                <prop key="lastName">
+                    Schaefer
+                </prop>
+            </props>
+        </property>
+
+        <!--Set集合-->
+        <property name="set">
+            <set>
+                <value>Set World!</value>
+                <ref bean="beanString"/>
+            </set>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>List World!</value>
+                <ref bean="beanString"/>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>

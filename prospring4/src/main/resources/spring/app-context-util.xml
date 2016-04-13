@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--开启注解-->
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.apress.prospring4.ch3.collection.annotation"/>
+
+    <bean id="beanString" class="java.lang.String">
+        <constructor-arg value="Bean Object"/>
+    </bean>
+
+    <util:map id="map" map-class="java.util.HashMap">
+        <entry key="SomeValue">
+            <value>Map World!</value>
+        </entry>
+        <entry key="BeanValue">
+            <ref bean="beanString"/>
+        </entry>
+    </util:map>
+
+    <util:properties id="props">
+        <prop key="firstName">
+            Chris
+        </prop>
+        <prop key="lastName">
+            Schaefer
+        </prop>
+    </util:properties>
+
+    <!--Set集合-->
+    <util:set id="set">
+        <value>Set World!</value>
+        <ref bean="beanString"/>
+    </util:set>
+
+    <util:list id="list">
+        <value>List World!</value>
+        <ref bean="beanString"/>
+    </util:list>
+
+
+</beans>

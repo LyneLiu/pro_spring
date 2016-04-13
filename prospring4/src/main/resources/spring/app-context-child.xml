@@ -20,6 +20,7 @@
         </bean>-->
 
         <!--将parent中的bean注入-->
+        <!--Spring4.0移除移除了ref local-->
         <bean id="target3" class="com.apress.prospring4.ch3.nestedapplicationcontext.SimpleTarget">
                 <property name="val">
                     <ref parent="injectBean"/>
