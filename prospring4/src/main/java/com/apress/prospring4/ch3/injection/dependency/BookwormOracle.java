@@ -1,4 +1,4 @@
-package com.apress.prospring4.ch3.dependencyinjection;
+package com.apress.prospring4.ch3.injection.dependency;
 
 /**
  * Created by nn_liu on 2016/4/6.

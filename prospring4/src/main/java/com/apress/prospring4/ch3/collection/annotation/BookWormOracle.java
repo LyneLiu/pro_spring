@@ -1,6 +1,6 @@
 package com.apress.prospring4.ch3.collection.annotation;
 
-import com.apress.prospring4.ch3.dependencyinjection.Oracle;
+import com.apress.prospring4.ch3.injection.dependency.Oracle;
 import org.springframework.stereotype.Service;
 
 /**

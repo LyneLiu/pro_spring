@@ -1,4 +1,4 @@
-package com.apress.prospring4.ch3.simpleinjection;
+package com.apress.prospring4.ch3.injection.simple;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
