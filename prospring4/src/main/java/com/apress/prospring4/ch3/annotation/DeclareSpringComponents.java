@@ -25,7 +25,7 @@ public class DeclareSpringComponents {
 
 
          /*通过xml配置文件实现Constructor方式依赖注入*/
-        ApplicationContext ctx2 = new ClassPathXmlApplicationContext("classpath:spring/app-context-constructor.xml");
+        ApplicationContext ctx2 = new ClassPathXmlApplicationContext("classpath:spring/ch3/app-context-constructor.xml");
 
 
         MessageProvider messageProvider2 = ctx2.getBean("messageProvider", MessageProvider.class);

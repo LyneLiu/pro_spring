@@ -18,7 +18,7 @@ public class XmlConfigWithBeanFactory {
 
         XmlBeanDefinitionReader rdr = new XmlBeanDefinitionReader(factory);
         /*注：classpath方法访问的方式不需要添加classpath*：等信息*/
-        rdr.loadBeanDefinitions(new ClassPathResource("spring/xml-bean-factory-config.xml"));
+        rdr.loadBeanDefinitions(new ClassPathResource("spring/ch3/xml-bean-factory-config.xml"));
 
         Oracle oracle = (Oracle)factory.getBean("oracle");
 

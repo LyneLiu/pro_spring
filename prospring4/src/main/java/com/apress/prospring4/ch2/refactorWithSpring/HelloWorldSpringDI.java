@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /*Spring的ApplicationContext可以替代MessageSupportFactory*/
 public class HelloWorldSpringDI {
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring/app-context.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring/ch2/app-context.xml");
 
         MessageRender mr = ctx.getBean("renderer",MessageRender.class);
         mr.render();

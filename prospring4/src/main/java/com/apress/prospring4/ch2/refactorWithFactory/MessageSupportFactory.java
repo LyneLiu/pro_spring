@@ -32,7 +32,7 @@ public class MessageSupportFactory {
 
         try{
 
-            props.load(new FileInputStream("src/main/resources/msf.properties"));
+            props.load(new FileInputStream("src/main/resources/spring/ch2/msf.properties"));
 
             String renderClass = props.getProperty("renderer.class");
             String providerClass = props.getProperty("provider.class");
