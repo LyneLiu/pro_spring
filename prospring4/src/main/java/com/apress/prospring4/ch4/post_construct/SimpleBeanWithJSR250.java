@@ -1,6 +1,7 @@
 package com.apress.prospring4.ch4.post_construct;
 
 import org.springframework.beans.factory.BeanCreationException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -9,7 +10,7 @@ import javax.annotation.PostConstruct;
 /**
  * Created by nn_liu on 2016/4/18.
  */
-public class SimpleBeanWithJSR250 {
+public class SimpleBeanWithJSR250 implements InitializingBean{
 
     private static final String DEFAULT_NAME = "Luke Skywalker";
     private String name;
@@ -21,6 +22,11 @@ public class SimpleBeanWithJSR250 {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+
+    public void initMethod() {
+        System.out.println("init_method of bean...");
     }
 
     /*通过注解的方法*/
@@ -54,14 +60,24 @@ public class SimpleBeanWithJSR250 {
         }
     }
 
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("AfterPropertiesSet of InitializingBean.");
+    }
+
     public static void main(String[] args) {
-        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+        /*GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/ch4/app-context-postconstruct.xml");
         ctx.refresh();
         SimpleBeanWithJSR250 simpleBean1 = getBean("simpleBean1", ctx);
         SimpleBeanWithJSR250 simpleBean2 = getBean("simpleBean2", ctx);
-        SimpleBeanWithJSR250 simpleBean3 = getBean("simpleBean3", ctx);
-    }
+        SimpleBeanWithJSR250 simpleBean3 = getBean("simpleBean3", ctx);*/
 
+        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+        ctx.load("classpath:spring/ch4/app-context-interface.xml");
+        ctx.refresh();
+        SimpleBeanWithJSR250 simpleBean1 = getBean("simpleBean1_1", ctx);
+        SimpleBeanWithJSR250 simpleBean2 = getBean("simpleBean2_1", ctx);
+        SimpleBeanWithJSR250 simpleBean3 = getBean("simpleBean3_1", ctx);
+    }
 
 }

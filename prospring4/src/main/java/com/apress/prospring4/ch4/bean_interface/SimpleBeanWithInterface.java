@@ -34,6 +34,7 @@ public class SimpleBeanWithInterface implements InitializingBean {
     }
 
 
+
     private static SimpleBeanWithInterface getBean(String beanName,
                                                    ApplicationContext ctx) {
         try {
