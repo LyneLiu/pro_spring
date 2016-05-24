@@ -1,57 +1,55 @@
-package com.apress.prospring4.ch4.bean_destruction.bean_annotation;
+package com.apress.prospring4.ch4.spring_aware.application_context_aware;
 
-import com.apress.prospring4.ch4.bean_destruction.bean_method.DestructiveBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
-import java.io.IOException;
-import java.sql.ResultSet;
 
 /**
- * Created by nn_liu on 2016/4/20.
+ * Created by nn_liu on 2016/5/24.
  */
-public class DestructiveBeanWithHook {
+public class DestructiveBeanWithInterface {
     private File file;
     private String filePath;
 
-    public void setFilePath(String filePath) {
+    public void setFilePath(String filePath){
         this.filePath = filePath;
     }
 
     @PostConstruct
-    public void afterPropertiesSet() throws IOException {
-        System.out.println("Initializing Bean with hook...");
+    public void afterPropertiesSet() throws Exception{
+        System.out.println("Initializing Bean...");
 
         if (filePath == null){
-            throw new IllegalArgumentException("" +
-                    "You must specify the filePath property of "+DestructiveBean.class);
+            throw new IllegalArgumentException(
+                    "You must set the filePath propertity of"+
+                    DestructiveBeanWithInterface.class);
         }
 
         this.file = new File(filePath);
         this.file.createNewFile();
-
         System.out.println("File exists:"+file.exists());
     }
 
     @PreDestroy
     public void destroy(){
-        System.out.println("Destroying Bean with hook...");
+        System.out.println("Destroy Bean!");
 
         if (!file.delete()){
             System.err.println("ERROR:failed to delete file.");
         }
 
         System.out.println("File exists:"+file.exists());
+
     }
 
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:spring/ch4/bean_destruction/app_context_annotation.xml");
+        ctx.load("classpath:/spring/ch4/spring_aware/app_application_context_aware.xml");
         ctx.registerShutdownHook();
         ctx.refresh();
 
-        DestructiveBeanWithHook bean = (DestructiveBeanWithHook)ctx.getBean("destructiveBeanWithHook");
+        DestructiveBeanWithInterface bean = (DestructiveBeanWithInterface) ctx.getBean("destructiveBeanWithInterface");
     }
 }
